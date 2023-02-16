@@ -25,12 +25,12 @@ def get_user_address():
         ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)  
         if ip not in app.config['Users'].ip_list: 
             app.config['Users'].ip_list.append(ip)
-        retval = jsonify({'1user ip': ip})
+        retval = jsonify({'user ip': ip})
     else:
-        ip = request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr) # if behind a proxy
+        ip = request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr)
         if ip not in app.config['Users'].ip_list: 
             app.config['Users'].ip_list.append(ip) 
-        retval = jsonify({'2user ip': ip})
+        retval = jsonify({'user ip': ip})
 
     return retval
 
