@@ -1,5 +1,5 @@
 # query-me
-Simple web app that returns the ip address of the requesting client or the list of ip adressess thath have queried the app in the past.
+Simple web app that returns the ip address of the requesting client or the list of ip adressess that have queried the app in the past.
 
 &nbsp;
 ## Installation
@@ -10,7 +10,7 @@ The below script builds the docker image and runs it on the local machine.
 ./run.sh
 ```
 
-> :warning: **If you are using mobile browser**: Please note that the container is set to run on the host network therefore it should only be used for development/testing purpose. The solution is also limitted to Linux OS and might not be working properly on Docker for macOS/Windows.
+> :warning: **Keep in mind**: Please note that the container is set to run on the host network therefore it should only be used for development/testing purpose. The solution is also limitted to Linux OS and might not be working properly on Docker for macOS/Windows.
 
 #### Health check
 ```console
@@ -81,7 +81,42 @@ You should get the 200 status along with
 }
 ```
 
+&nbsp;
 ## Usage
+
+To get the client ip address use the following endpoint
+```console
+{{ SERVICE_IP }}:5002/api/myip
+```
+
+Examplary output:
+```
+{
+  "user ip": "192.168.1.4"
+}
+```
+&nbsp;
+List of ip addresses could be obtained using following endpoint
+```console
+{{ SERVICE_IP }}:5002/api/iplist
+```
+Examplary output:
+```
+{
+  "uptime": "0:02:30.261294",
+  "users ip list": [
+    "192.168.1.4",
+    "192.168.1.6"
+  ]
+}
+```
+&nbsp;
+## Room for improvement
+- Add rate limiting per client IP address
+- Improve returning real client address in case of proxies
+
+
+
 
 
 
