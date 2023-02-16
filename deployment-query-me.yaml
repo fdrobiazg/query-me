@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: query-me
-        image: query-me:0.5
+        image: query-me:v1
         imagePullPolicy: IfNotPresent
       hostNetwork: true
       restartPolicy: Always
