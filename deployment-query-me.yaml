@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: query-me
+  labels:
+    app: query-me
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: query-me
+  template:
+    metadata:
+      labels:
+        app: query-me
+    spec:
+      containers:
+      - name: query-me
+        image: query-me:0.5
+        imagePullPolicy: IfNotPresent
+      hostNetwork: true
+      restartPolicy: Always
+
+
