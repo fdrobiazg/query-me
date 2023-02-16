@@ -59,6 +59,12 @@ Check if created pod(s) are running
 kubectl get pods -n query-me
 ```
 
+Pod(s) should be in running state as below
+```
+NAME                        READY   STATUS    RESTARTS   AGE
+query-me-7f47c944cd-q4fl8   1/1     Running   0          93m
+```
+
 SSH to Minikube
 ```console
 minikube ssh
