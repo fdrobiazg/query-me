@@ -26,14 +26,14 @@ You should get the 200 status along with
 &nbsp;
 ### Minikube
 
-Build the image by running
-```console
-docker build -t query-me:v1 .
-```
-
 Reuse Docker daemon inside minikube cluster using
 ```console
 eval $(minikube docker-env)
+```
+
+Build the image by running
+```console
+docker build -t query-me:v1 .
 ```
 
 Create namespace for the application
@@ -41,15 +41,20 @@ Create namespace for the application
 kubectl create namespace query-me
 ```
 
-
-Create application deployment using <i>deployment-query-me.yaml</i>
+Move to helm chart folder and deploy application using Helm
 ```console
-kubectl apply -f deployment-query-me.yaml
+cd helm-chart/query-me
+helm install query-me . -f values.yaml -n query-me
 ```
 
-Expose application by creating service
+You should see
 ```console
-kubectl expose deployment query-me --name=query-me-svc --type=NodePort --port 80 --target-port 5002
+NAME: query-me
+LAST DEPLOYED: Thu Feb 23 18:28:01 2023
+NAMESPACE: query-me
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
 ```
 
 #### Health check
@@ -118,8 +123,7 @@ Examplary output:
 ```
 &nbsp;
 ## Room for improvement
-- Add rate limiting per client IP address
-- Improve returning real client address in case of proxies
+- Add ingress-route for communication outside of cluster
 
 
 
