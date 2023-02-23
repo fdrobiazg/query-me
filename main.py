@@ -24,6 +24,7 @@ limiter = Limiter(
     storage_uri="memory://",
 )
 
+@limiter.exempt
 @app.route("/api/health", methods=["GET"])
 def health_check():
     return jsonify({'status': 'healthy'})
