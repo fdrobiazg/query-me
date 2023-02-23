@@ -70,7 +70,7 @@ NAME                        READY   STATUS    RESTARTS   AGE
 query-me-7f47c944cd-q4fl8   1/1     Running   0          93m
 ```
 
-In the seperate terminal expose application NodePort by using
+In the separate terminal expose the application's NodePort by using
 ```console
 minikube service query-me --url -n query-me
 ```
