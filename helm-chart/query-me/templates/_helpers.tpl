@@ -49,14 +49,3 @@ Selector labels
 app.kubernetes.io/name: {{ include "query-me.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "query-me.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "query-me.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}
