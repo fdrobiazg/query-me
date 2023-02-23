@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 import datetime
 
 
@@ -14,6 +16,13 @@ def create_app(users_instance):
 
 users = Users()
 app = create_app(users)
+
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["200 per day", "50 per hour", "10 per minute"],
+    storage_uri="memory://",
+)
 
 @app.route("/api/health", methods=["GET"])
 def health_check():
