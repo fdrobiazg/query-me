@@ -119,6 +119,7 @@ Examplary output:
 &nbsp;
 ## Room for improvement
 - Add ingress-route for communication outside of cluster (it would be more convinient to have it exposed just after the deployment)
+- Multistage the Dockerfile for build and run parts (potentially smaller size)
 
 
 
