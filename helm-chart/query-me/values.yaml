@@ -1,0 +1,10 @@
+replicaCount: 1
+
+image:
+  repository: query-me  # From local host
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 5002
+

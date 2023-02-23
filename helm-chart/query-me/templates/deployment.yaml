@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "query-me.fullname" . }}
+  labels:
+    {{- include "query-me.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "query-me.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "query-me.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+          - name: http
+            containerPort: {{ .Values.service.port }}
+            protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 5002
+          periodSeconds: 3
+      hostNetwork: true
+      restartPolicy: Always
+
+
