@@ -41,7 +41,7 @@ Create namespace for the application
 kubectl create namespace query-me
 ```
 
-Move to helm chart folder and deploy application using Helm
+Go to helm chart folder and deploy application using Helm
 ```console
 cd helm-chart/query-me
 helm install query-me . -f values.yaml -n query-me
