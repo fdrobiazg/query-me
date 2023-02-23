@@ -118,7 +118,7 @@ Examplary output:
 ```
 &nbsp;
 ## Room for improvement
-- Add ingress-route for communication outside of cluster
+- Add ingress-route for communication outside of cluster (it would be more convinient to have it exposed just after the deployment)
 
 
 
