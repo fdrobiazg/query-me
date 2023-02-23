@@ -70,19 +70,14 @@ NAME                        READY   STATUS    RESTARTS   AGE
 query-me-7f47c944cd-q4fl8   1/1     Running   0          93m
 ```
 
-SSH to Minikube
+In the seperate terminal expose application NodePort by using
 ```console
-minikube ssh
+minikube service query-me --url -n query-me
 ```
 
-Check the ip address of created NodePort
+Use the obtained address for the health check
 ```console
-kubectl get svc -n query-me
-```
-
-Use this address for the health check
-```console
-curl -v {{ SERVICE_IP_ADDRESS }}:5002/api/health
+curl -v {{ SERVICE_IP }}:5002/api/health
 ```
 
 You should get the 200 status along with
