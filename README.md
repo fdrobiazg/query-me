@@ -118,8 +118,7 @@ Examplary output:
 ```
 &nbsp;
 ## Room for improvement
-- Add ingress-route for communication outside of cluster (it would be more convenient to have it exposed just after the deployment)
-- Multistage Dockerfile - build and run part (potentially smaller size)
+- Check if the request has been forwarded (proxy) when limiting requests
 
 
 
